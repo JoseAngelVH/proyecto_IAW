@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     // OPCION3: listado general
     public function index() {
-        $products = Product::with('category')->orderBy('id')->get();
+        $products = Product::with('category')->orderBy('category_id')->get();
         return view('products.index', compact('products'));
     }
 
