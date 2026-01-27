@@ -8,19 +8,17 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // OPCION3: listado general
+
     public function index() {
         $products = Product::with('category')->orderBy('category_id')->get();
         return view('products.index', compact('products'));
     }
 
-    // OPCION2: formulario alta
     public function create() {
         $categories = Category::orderBy('name')->get();
         return view('products.create', compact('categories'));
     }
 
-    // OPCION2: guardar alta
     public function store(Request $request) {
         $data = $request->validate([
         'description' => 'required|min:3',
@@ -32,12 +30,10 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('ok', 'Producto guardado correctamente');
     }
 
-    // OPCION4: formulario filtro
     public function filterForm() {
         return view('products.filter');
     }
 
-    // OPCION4: resultados filtro (ejemplo simple)
     public function filterResults(Request $request) {
         $request->validate([
         'criterion' => 'required|in:low_stock,stock_gt_10,price_lt_20',
@@ -54,7 +50,6 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
-    // OPCION5: pantalla “gestión” (elige y accede a editar/borrar)
     public function manage() {
         $products = Product::with('category')->orderBy('id')->get();
         return view('products.manage', compact('products'));
