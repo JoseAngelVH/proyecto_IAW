@@ -13,3 +13,5 @@ Route::get('/products/manage', [ProductController::class, 'manage'])->name('prod
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/products/sell', [ProductController::class, 'sellForm'])->name('products.sell.form');
+Route::post('/products/sell', [ProductController::class, 'sell'])->name('products.sell');

@@ -75,4 +75,23 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.manage')->with('ok', 'Producto borrado');
     }
+
+    public function sellForm() {
+        $products = Product::orderBy('description')->get();
+        return view('products.sell', compact('products'));
+    }
+
+    public function sell(Request $request) {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        $product = Product::findOrFail($request->product_id);
+        $product->delete();
+
+        return redirect()->route('products.sell.form')
+            ->with('ok', 'Producto vendido correctamente');
+    }
+
+
 }
