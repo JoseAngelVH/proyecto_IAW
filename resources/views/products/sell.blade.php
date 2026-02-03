@@ -44,7 +44,7 @@
             >
         </div>
 
-        <button class="btn btn-success">
+        <button class="btn btn-primary">
             Vender
         </button>
         </form>
