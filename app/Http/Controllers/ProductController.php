@@ -82,16 +82,30 @@ class ProductController extends Controller
     }
 
     public function sell(Request $request) {
-        $request->validate([
-            'product_id' => 'required|exists:products,id',
+    $data = $request->validate([
+        'product_id' => 'required|exists:products,id',
+        'quantity'   => 'required|integer|min:1',
+    ]);
+
+    $product = Product::findOrFail($data['product_id']);
+
+    if ($data['quantity'] > $product->stock) {
+        return back()->withErrors([
+            'quantity' => 'No hay suficiente stock disponible'
         ]);
-
-        $product = Product::findOrFail($request->product_id);
-        $product->delete();
-
-        return redirect()->route('products.sell.form')
-            ->with('ok', 'Producto vendido correctamente');
     }
 
+    $product->stock -= $data['quantity'];
+
+    if ($product->stock === 0) {
+        $product->delete();
+    } else {
+        $product->save();
+    }
+
+    return redirect()
+        ->route('products.sell.form')
+        ->with('ok', 'Venta realizada correctamente');
+    }
 
 }

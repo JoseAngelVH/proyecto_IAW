@@ -24,15 +24,28 @@
             <select name="product_id" class="form-select" required>
             <option value="">-- Selecciona un producto --</option>
             @foreach($products as $p)
+                @if($p->stock > 0)
                 <option value="{{ $p->id }}">
-                {{ $p->description }} ({{ $p->category?->name }})
+                    {{ $p->description }} (Stock: {{ $p->stock }})
                 </option>
+                @endif
             @endforeach
             </select>
         </div>
 
-        <button class="btn btn-primary">
-            Vender producto
+        <div class="mb-3">
+            <label class="form-label">Cantidad a vender</label>
+            <input
+            type="number"
+            name="quantity"
+            class="form-control"
+            min="1"
+            required
+            >
+        </div>
+
+        <button class="btn btn-success">
+            Vender
         </button>
         </form>
     @endif
