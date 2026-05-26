@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Definición de las rutas web del proyecto.
+ * Cada ruta conecta una URL con una acción del controlador y una vista.
+ */
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 

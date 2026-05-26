@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Migración para la tabla products.
+ * Crea la tabla principal del inventario con stock, precio y relación con categorías.
+ */
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

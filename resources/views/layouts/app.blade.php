@@ -1,7 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+
+    <!--
+    Layout principal de la aplicación.
+    Aquí se define la cabecera, el menú y el contenedor donde se cargan
+    las vistas específicas de cada pantalla.
+    -->
+
     <meta charset="UTF-8">
     <title>@yield('title', 'Inventario')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">

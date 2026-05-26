@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Modelo Category.
+ * Representa una categoría y permite acceder a todos sus productos.
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;

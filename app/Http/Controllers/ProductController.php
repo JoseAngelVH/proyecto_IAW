@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Controlador de productos.
+ * Gestiona la lista, creación, edición, filtrado y venta de productos.
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\Product;

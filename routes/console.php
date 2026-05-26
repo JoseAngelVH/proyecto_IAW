@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Comandos Artisan personalizados.
+ * Aquí se pueden registrar comandos de consola para el proyecto.
+ */
+
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 

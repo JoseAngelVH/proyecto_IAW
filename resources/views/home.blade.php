@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!--
+    Página de inicio.
+    Muestra un mensaje de bienvenida y dirige al usuario a las acciones del inventario.
+    -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>

@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Modelo Product.
+ * Representa un producto del inventario y su relación con una categoría.
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
