@@ -36,20 +36,27 @@ class ProductController extends Controller
     }
 
     public function filterForm() {
-        return view('products.filter');
+        $categories = Category::orderBy('name')->get();
+        return view('products.filter', compact('categories'));
     }
 
     public function filterResults(Request $request) {
         $request->validate([
-        'criterion' => 'required|in:low_stock,stock_gt_10,price_lt_20',
+        'criterion' => 'nullable|in:low_stock,stock_gt_10,price_lt_20',
+        'category_id' => 'nullable|exists:categories,id',
         ]);
         $q = Product::with('category');
-        if ($request->criterion === 'low_stock') {
-            $q->where('stock', '<=', 5);
-        } elseif ($request->criterion === 'stock_gt_10') {
-            $q->where('stock', '>', 10);
-        } else {
-            $q->where('price', '<', 20);
+        if ($request->filled('criterion')) {
+            if ($request->criterion === 'low_stock') {
+                $q->where('stock', '<=', 5);
+            } elseif ($request->criterion === 'stock_gt_10') {
+                $q->where('stock', '>', 10);
+            } else {
+                $q->where('price', '<', 20);
+            }
+        }
+        if ($request->filled('category_id')) {
+            $q->where('category_id', $request->category_id);
         }
         $products = $q->orderBy('id')->get();
         return view('products.index', compact('products'));

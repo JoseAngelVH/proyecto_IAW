@@ -21,9 +21,19 @@
             <div class="mb-3">
                 <label class="form-label">Criterio</label>
                 <select class="form-select" name="criterion">
-                    <option value="low_stock">Stock bajo (<= 5)</option>
-                    <option value="stock_gt_10">Stock alto (> 10)</option>
-                    <option value="price_lt_20">Precio barato (< 20)</option>
+                    <option value="">-- Sin criterio --</option>
+                    <option value="low_stock" @selected(old('criterion') == 'low_stock')>Stock bajo (<= 5)</option>
+                    <option value="stock_gt_10" @selected(old('criterion') == 'stock_gt_10')>Stock alto (> 10)</option>
+                    <option value="price_lt_20" @selected(old('criterion') == 'price_lt_20')>Precio barato (< 20)</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Categoría</label>
+                <select class="form-select" name="category_id">
+                    <option value="">-- Todas las categorías --</option>
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <button class="btn btn-primary">Aplicar filtro</button>
