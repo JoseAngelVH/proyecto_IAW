@@ -112,6 +112,7 @@
             <a class="btn-custom btn-nav-primary" href="{{ route('products.index') }}">Listado General</a>
             <a class="btn-custom btn-nav-primary" href="{{ route('products.filter.form') }}">Filtros</a>
             <a class="btn-custom btn-nav-primary" href="{{ route('products.sell.form') }}">Venta</a>
+            <a class="btn-custom btn-nav-primary" href="{{ route('sales.index') }}">Registro Ventas</a>
             <a class="btn-custom btn-nav-manage" href="{{ route('products.manage') }}">Modificar / Borrar</a>
         </div>
     </nav>

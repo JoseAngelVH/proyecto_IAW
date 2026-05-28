@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -106,9 +107,18 @@ class ProductController extends Controller
             'quantity' => 'No hay suficiente stock disponible'
         ]);
     }
+    // Registrar venta
+    $unitPrice = $product->price;
+    $total = $unitPrice * $data['quantity'];
+    Sale::create([
+        'product_id' => $product->id,
+        'quantity' => $data['quantity'],
+        'unit_price' => $unitPrice,
+        'total_price' => $total,
+    ]);
 
+    // Ajustar stock
     $product->stock -= $data['quantity'];
-
     if ($product->stock === 0) {
         $product->delete();
     } else {

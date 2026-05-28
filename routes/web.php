@@ -7,6 +7,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 
 Route::get('/', fn () => view('home'))->name('home');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -20,3 +21,4 @@ Route::put('/products/{product}', [ProductController::class, 'update'])->name('p
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 Route::get('/products/sell', [ProductController::class, 'sellForm'])->name('products.sell.form');
 Route::post('/products/sell', [ProductController::class, 'sell'])->name('products.sell');
+Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
